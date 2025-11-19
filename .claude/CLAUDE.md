@@ -32,26 +32,9 @@ Storage Manager - A custom application for managing food inventory, recipes, and
 
 ### Git Commit Guidelines
 
-**Commit Categories:**
-- `[CODE]` - Implementation work (src/, main.py, tests/)
-- `[CONCEPT]` - Design and architecture (requirements/, specs/, config/, templates/)
-- `[DOC]` - Documentation (docs/, README updates)
-- `[SETUP]` - Environment and tooling (requirements.txt, pyproject.toml, .venv setup, package installation)
-- `[CLAUDE]` - Claude Code configuration (.claude/agents/, .claude/guides/, .claude/audit/, CLAUDE.md)
-- `[ORGA]` - Project organization (todo/, file restructuring, .gitignore)
-
-**Categorization Rules:**
-- `src/`, `main.py`, `tests/` → `[CODE]`
-- `requirements/`, `specs/`, `config/`, `templates/` → `[CONCEPT]`
-- `docs/`, README files → `[DOC]`
-- `requirements.txt`, `requirements-dev.txt`, `pyproject.toml`, package setup → `[SETUP]`
-- `.claude/agents/`, `.claude/guides/`, `.claude/audit/`, `CLAUDE.md` → `[CLAUDE]`
-- `todo/`, `.gitignore`, directory restructuring → `[ORGA]`
-- Mixed changes → Prefer separate commits; if not feasible, use dominant category
-
 **Commit Message Structure:**
 ```
-[CATEGORY] Brief imperative description
+Brief imperative description
 ```
 
 **Don't add this:**
@@ -59,11 +42,4 @@ Storage Manager - A custom application for managing food inventory, recipes, and
 
   Co-Authored-By: Claude <noreply@anthropic.com>"&& git status
 
-**Examples:**
-- `[CODE] Implement product inventory manager`
-- `[CONCEPT] Define unit conversion system for measurements`
-- `[DOC] Add API documentation for recipe scaling`
-- `[SETUP] Add pytest and coverage configuration`
-- `[CLAUDE] Add project-context-auditor agent configuration`
-- `[ORGA] Move completed todos to done directory`
 
