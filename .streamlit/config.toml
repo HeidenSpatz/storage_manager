@@ -1,0 +1,33 @@
+# Theme - Visual appearance
+[theme]
+# Color for interactive elements (buttons, sliders, checkboxes)
+primaryColor = "#1f77b4"
+# Main background color (matches the light blue we set earlier)
+backgroundColor = "#e8f4f8"
+# Background for sidebars, widgets, and code blocks
+secondaryBackgroundColor = "#d0e8f0"
+# Main text color throughout the app
+textColor = "#262730"
+# Font family (options: "sans serif", "serif", "monospace")
+font = "sans serif"
+
+# Server behavior
+[server]
+# Runs without opening browser automatically (useful for deployment)
+headless = true
+# Disables Cross-Origin Resource Sharing (set to true if accessing from different domains)
+enableCORS = false
+# Security feature to prevent cross-site request forgery attacks
+enableXsrfProtection = true
+
+# Browser behavior
+[browser]
+# Prevents Streamlit from collecting anonymous usage statistics
+gatherUsageStats = false
+
+# Client-side UI behavior
+[client]
+# Shows detailed error messages (helpful during development)
+showErrorDetails = true
+# Minimal toolbar - cleaner for mobile (options: "auto", "developer", "viewer", "minimal")
+toolbarMode = "minimal"
