@@ -1,0 +1,40 @@
+# Virtual Environments
+.venv/
+venv/
+env/
+
+# Python Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Distribution
+build/
+dist/
+*.egg-info/
+
+# Data Files
+data/
+outputs/
+
+# Archives and Completed Todos
+archive/
+todo/done/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+htmlcov/
+.coverage
+
+# Environment
+.env
+.env.local
