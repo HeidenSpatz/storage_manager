@@ -29,20 +29,19 @@ if page == "Ingredients":
 
     # Add new ingredient section
     with st.expander("Add New Ingredient"):
-        col1, col2 = st.columns(2)
+        ing_name = st.text_input("Ingredient Name")
+        ing_category = st.selectbox("Category", dm.get_categories())
+        ing_unit = st.selectbox("Unit", dm.get_units())
+        ing_weight_per_unit = st.number_input("Weight per Unit", min_value=0.0, step=0.1)
+        ing_num_units = st.number_input("Number of Units", min_value=0, step=1, value=0)
 
-        with col1:
-            ing_name = st.text_input("Ingredient Name")
-            ing_category = st.selectbox("Category", dm.get_categories())
-            ing_unit = st.selectbox("Unit", dm.get_units())
-
-        with col2:
-            ing_quantity = st.number_input("Quantity", min_value=0.0, step=0.1)
-            ing_min_stock = st.number_input("Min Stock Alert", min_value=0.0, step=0.1)
+        # Display calculated total
+        total = ing_weight_per_unit * ing_num_units
+        st.info(f"**Total: {total:.1f} {ing_unit}**")
 
         if st.button("Add Ingredient"):
             if ing_name:
-                dm.add_ingredient(ing_name, ing_category, ing_unit, ing_quantity, ing_min_stock)
+                dm.add_ingredient(ing_name, ing_category, ing_unit, ing_weight_per_unit, ing_num_units)
                 st.success(f"Added {ing_name}!")
                 st.rerun()
             else:
@@ -60,32 +59,40 @@ if page == "Ingredients":
     if ingredients:
         for ing in sorted(ingredients, key=lambda x: x['name']):
             with st.container():
-                col1, col2, col3, col4 = st.columns([3, 2, 2, 1])
+                # Display ingredient name, category, unit, and total
+                total_weight = ing.get('weight_per_unit', 0) * ing.get('num_units', 0)
+                st.write(f"**{ing['name']}** ({ing['category']}) - Unit: {ing['unit']}")
+                st.write(f"Total: {total_weight:.1f} {ing['unit']}")
+
+                col1, col2, col3 = st.columns([2, 2, 1])
 
                 with col1:
-                    st.write(f"**{ing['name']}** ({ing['category']})")
+                    # Update weight per unit
+                    new_weight = st.number_input(
+                        "Weight per Unit",
+                        min_value=0.0,
+                        value=float(ing.get('weight_per_unit', 0)),
+                        step=0.1,
+                        key=f"weight_{ing['id']}"
+                    )
+                    if new_weight != ing.get('weight_per_unit', 0):
+                        dm.update_ingredient(ing['id'], weight_per_unit=new_weight)
+                        st.rerun()
 
                 with col2:
-                    # Update quantity
-                    new_qty = st.number_input(
-                        "Qty",
-                        min_value=0.0,
-                        value=float(ing['quantity']),
-                        step=0.1,
-                        key=f"qty_{ing['id']}",
-                        label_visibility="collapsed"
+                    # Update number of units
+                    new_units = st.number_input(
+                        "Number of Units",
+                        min_value=0,
+                        value=int(ing.get('num_units', 0)),
+                        step=1,
+                        key=f"units_{ing['id']}"
                     )
-                    if new_qty != ing['quantity']:
-                        dm.update_ingredient(ing['id'], quantity=new_qty)
+                    if new_units != ing.get('num_units', 0):
+                        dm.update_ingredient(ing['id'], num_units=new_units)
+                        st.rerun()
 
                 with col3:
-                    st.write(f"{ing['quantity']} {ing['unit']}")
-
-                    # Low stock warning
-                    if ing['min_stock'] > 0 and ing['quantity'] < ing['min_stock']:
-                        st.warning("Low stock!")
-
-                with col4:
                     if st.button("Delete", key=f"del_{ing['id']}"):
                         dm.delete_ingredient(ing['id'])
                         st.rerun()

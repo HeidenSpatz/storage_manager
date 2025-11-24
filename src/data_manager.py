@@ -27,7 +27,7 @@ def save_data(data: Dict) -> None:
 
 
 # Ingredient operations
-def add_ingredient(name: str, category: str, unit: str, quantity: float, min_stock: float = 0) -> Dict:
+def add_ingredient(name: str, category: str, unit: str, weight_per_unit: float, num_units: int) -> Dict:
     """Add a new ingredient."""
     data = load_data()
 
@@ -39,8 +39,9 @@ def add_ingredient(name: str, category: str, unit: str, quantity: float, min_sto
         'name': name,
         'category': category,
         'unit': unit,
-        'quantity': quantity,
-        'min_stock': min_stock
+        'weight_per_unit': weight_per_unit,
+        'num_units': num_units,
+        'quantity': weight_per_unit * num_units  # Keep for backward compatibility
     }
 
     data['ingredients'].append(ingredient)
@@ -55,6 +56,9 @@ def update_ingredient(ingredient_id: int, **kwargs) -> Optional[Dict]:
     for ingredient in data['ingredients']:
         if ingredient['id'] == ingredient_id:
             ingredient.update(kwargs)
+            # Recalculate quantity if weight_per_unit or num_units changed
+            if 'weight_per_unit' in kwargs or 'num_units' in kwargs:
+                ingredient['quantity'] = ingredient.get('weight_per_unit', 0) * ingredient.get('num_units', 0)
             save_data(data)
             return ingredient
 
