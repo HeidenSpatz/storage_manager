@@ -177,7 +177,7 @@ elif page == "Recipes":
 
 # ===== MEAL PLANNING PAGE =====
 elif page == "Meal Planning":
-    st.header("Meal Planning & Shopping List")
+    st.header("Meal Planning")
 
     recipes = dm.get_recipes()
 
