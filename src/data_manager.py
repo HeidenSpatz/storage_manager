@@ -109,8 +109,8 @@ def get_ingredients(category: Optional[str] = None) -> List[Dict]:
 
 
 # Recipe operations
-def add_recipe(name: str, description: str, base_servings: int, ingredients: List[Dict], instructions: str = "") -> Dict:
-    """Add a new recipe."""
+def add_recipe(name: str, comments: str, ingredients: List[Dict]) -> Dict:
+    """Add a new recipe (per person, grams only)."""
     data = load_data()
 
     # Generate new ID
@@ -119,10 +119,8 @@ def add_recipe(name: str, description: str, base_servings: int, ingredients: Lis
     recipe = {
         'id': new_id,
         'name': name,
-        'description': description,
-        'base_servings': base_servings,
-        'ingredients': ingredients,  # [{'ingredient_id': int, 'quantity': float, 'unit': str}]
-        'instructions': instructions
+        'comments': comments,
+        'ingredients': ingredients  # [{'ingredient_id': int, 'quantity_grams': float}]
     }
 
     data['recipes'].append(recipe)
@@ -179,28 +177,28 @@ def calculate_meal_requirements(recipe_id: int, num_people: int) -> Dict:
     if not recipe:
         return {'error': 'Recipe not found'}
 
-    # Scale factor
-    scale = num_people / recipe['base_servings']
+    # Recipes are per person, so scale is just num_people
+    scale = num_people
 
     requirements = []
     for recipe_ing in recipe['ingredients']:
         ing_id = recipe_ing['ingredient_id']
-        required_qty = recipe_ing['quantity'] * scale
+        required_qty_grams = recipe_ing['quantity_grams'] * scale
 
         # Find ingredient in storage
         storage_ing = next((ing for ing in data['ingredients'] if ing['id'] == ing_id), None)
 
         if storage_ing:
             available_qty = storage_ing['quantity']
-            is_sufficient = available_qty >= required_qty
-            shortfall = max(0, required_qty - available_qty)
+            is_sufficient = available_qty >= required_qty_grams
+            shortfall = max(0, required_qty_grams - available_qty)
 
             requirements.append({
                 'ingredient_id': ing_id,
                 'name': storage_ing['name'],
-                'required_quantity': required_qty,
+                'required_quantity': required_qty_grams,
                 'available_quantity': available_qty,
-                'unit': recipe_ing['unit'],
+                'unit': 'g',
                 'is_sufficient': is_sufficient,
                 'shortfall': shortfall
             })

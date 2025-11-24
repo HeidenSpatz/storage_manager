@@ -109,10 +109,9 @@ elif page == "Recipes":
     # Add new recipe section
     with st.expander("Add New Recipe"):
         recipe_name = st.text_input("Recipe Name")
-        recipe_desc = st.text_area("Description")
-        recipe_servings = st.number_input("Base Servings (people)", min_value=1, value=4, step=1)
+        recipe_comments = st.text_area("Comments")
 
-        st.subheader("Ingredients")
+        st.subheader("Ingredients (per person, in grams)")
 
         # Get all ingredients for selection
         all_ingredients = dm.get_ingredients()
@@ -123,7 +122,7 @@ elif page == "Recipes":
 
             recipe_ingredients = []
             for i in range(num_ingredients):
-                col1, col2, col3 = st.columns([3, 1, 1])
+                col1, col2 = st.columns([3, 1])
 
                 with col1:
                     selected_ing = st.selectbox(
@@ -134,23 +133,17 @@ elif page == "Recipes":
                     )
 
                 with col2:
-                    qty = st.number_input(f"Qty {i+1}", min_value=0.0, step=0.1, key=f"recipe_qty_{i}")
+                    qty_grams = st.number_input(f"Grams {i+1}", min_value=0.0, step=0.1, key=f"recipe_qty_{i}")
 
-                with col3:
-                    unit = st.selectbox(f"Unit {i+1}", dm.get_units(), key=f"recipe_unit_{i}")
-
-                if selected_ing and qty > 0:
+                if selected_ing and qty_grams > 0:
                     recipe_ingredients.append({
                         'ingredient_id': selected_ing['id'],
-                        'quantity': qty,
-                        'unit': unit
+                        'quantity_grams': qty_grams
                     })
-
-            recipe_instructions = st.text_area("Instructions (optional)")
 
             if st.button("Add Recipe"):
                 if recipe_name and recipe_ingredients:
-                    dm.add_recipe(recipe_name, recipe_desc, recipe_servings, recipe_ingredients, recipe_instructions)
+                    dm.add_recipe(recipe_name, recipe_comments, recipe_ingredients)
                     st.success(f"Added recipe: {recipe_name}!")
                     st.rerun()
                 else:
@@ -165,17 +158,15 @@ elif page == "Recipes":
         st.subheader("Your Recipes")
 
         for recipe in sorted(recipes, key=lambda x: x['id']):
-            with st.expander(f"{recipe['name']} (Serves {recipe['base_servings']})"):
-                st.write(f"**Description:** {recipe['description']}")
+            with st.expander(f"{recipe['name']} (per person)"):
+                if recipe.get('comments'):
+                    st.write(f"**Comments:** {recipe['comments']}")
 
-                st.write("**Ingredients:**")
+                st.write("**Ingredients (per person):**")
                 for ring in recipe['ingredients']:
                     ing = next((i for i in all_ingredients if i['id'] == ring['ingredient_id']), None)
                     if ing:
-                        st.write(f"- {ring['quantity']} {ring['unit']} {ing['name']}")
-
-                if recipe.get('instructions'):
-                    st.write(f"**Instructions:** {recipe['instructions']}")
+                        st.write(f"- {ring['quantity_grams']}g {ing['name']}")
 
                 if st.button("Delete Recipe", key=f"del_recipe_{recipe['id']}"):
                     dm.delete_recipe(recipe['id'])
@@ -195,14 +186,14 @@ elif page == "Meal Planning":
         selected_recipe = st.selectbox(
             "Select Recipe",
             options=recipes,
-            format_func=lambda x: f"{x['name']} (Serves {x['base_servings']})"
+            format_func=lambda x: f"{x['name']} (per person)"
         )
 
         # Number of people
         num_people = st.number_input(
             "Number of People",
             min_value=1,
-            value=selected_recipe['base_servings'],
+            value=1,
             step=1
         )
 
