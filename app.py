@@ -197,6 +197,19 @@ elif page == "Meal Planning":
             step=1
         )
 
+        # Display ingredients for selected recipe
+        st.subheader(f"{selected_recipe['name']} - Ingredients")
+        all_ingredients = dm.get_ingredients()
+
+        st.write(f"**For {num_people} {'person' if num_people == 1 else 'people'}:**")
+        for recipe_ing in selected_recipe['ingredients']:
+            ing = next((i for i in all_ingredients if i['id'] == recipe_ing['ingredient_id']), None)
+            if ing:
+                total_grams = recipe_ing['quantity_grams'] * num_people
+                st.write(f"- {total_grams:.1f}g {ing['name']}")
+
+        st.divider()
+
         if st.button("Calculate Requirements"):
             result = dm.calculate_meal_requirements(selected_recipe['id'], num_people)
 
