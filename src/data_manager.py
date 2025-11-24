@@ -11,8 +11,28 @@ def load_data() -> Dict:
         return {
             "ingredients": [],
             "recipes": [],
-            "categories": [],
-            "units": []
+            "categories": [
+                "Vegetables",
+                "Fruits",
+                "Meat",
+                "Dairy",
+                "Grains",
+                "Spices",
+                "Beverages",
+                "Canned Goods",
+                "Frozen",
+                "Other"
+            ],
+            "units": [
+                "pieces",
+                "cans",
+                "packages",
+                "bottles",
+                "kg",
+                "g",
+                "l",
+                "ml"
+            ]
         }
 
     with open(DATA_FILE, 'r') as f:
@@ -195,10 +215,36 @@ def calculate_meal_requirements(recipe_id: int, num_people: int) -> Dict:
 def get_categories() -> List[str]:
     """Get list of categories."""
     data = load_data()
-    return data.get('categories', [])
+    categories = data.get('categories', [])
+    if not categories:
+        categories = [
+            "Vegetables",
+            "Fruits",
+            "Meat",
+            "Dairy",
+            "Grains",
+            "Spices",
+            "Beverages",
+            "Canned Goods",
+            "Frozen",
+            "Other"
+        ]
+    return categories
 
 
 def get_units() -> List[str]:
     """Get list of units."""
     data = load_data()
-    return data.get('units', [])
+    units = data.get('units', [])
+    if not units:
+        units = [
+            "pieces",
+            "cans",
+            "packages",
+            "bottles",
+            "kg",
+            "g",
+            "l",
+            "ml"
+        ]
+    return units
