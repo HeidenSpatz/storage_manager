@@ -9,7 +9,7 @@ import data_manager as dm
 
 # Configure for mobile/smartphone use
 st.set_page_config(
-    page_title="Storage Manager",
+    page_title="Lunas Storage",
     page_icon="📱",
     layout="centered",
     initial_sidebar_state="collapsed",
@@ -21,7 +21,7 @@ page = st.sidebar.selectbox(
     ["Ingredients", "Recipes", "Meal Planning"]
 )
 
-st.title("Storage Manager")
+st.title("Lunas Storage")
 
 # ===== INGREDIENTS PAGE =====
 if page == "Ingredients":
