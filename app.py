@@ -9,7 +9,7 @@ import data_manager as dm
 
 # Configure for mobile/smartphone use
 st.set_page_config(
-    page_title="Lunas Storage",
+    page_title="NYC 2025 Storage Manager",
     page_icon="📱",
     layout="centered",
     initial_sidebar_state="collapsed",
