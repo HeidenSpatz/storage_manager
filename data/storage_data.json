@@ -491,7 +491,403 @@
       "amount": 1.0
     }
   ],
-  "recipes": [],
+  "recipes": [
+    {
+      "id": 1,
+      "name": "Chili sin Carne",
+      "comments": "Missing ingredients not in database: sourcream plain",
+      "ingredients": [
+        {
+          "ingredient_id": 3,
+          "quantity_grams": 15.0
+        },
+        {
+          "ingredient_id": 4,
+          "quantity_grams": 60.0
+        },
+        {
+          "ingredient_id": 5,
+          "quantity_grams": 20.0
+        },
+        {
+          "ingredient_id": 6,
+          "quantity_grams": 20.0
+        },
+        {
+          "ingredient_id": 7,
+          "quantity_grams": 50.0
+        },
+        {
+          "ingredient_id": 8,
+          "quantity_grams": 1.0
+        },
+        {
+          "ingredient_id": 9,
+          "quantity_grams": 50.0
+        },
+        {
+          "ingredient_id": 10,
+          "quantity_grams": 50.0
+        },
+        {
+          "ingredient_id": 11,
+          "quantity_grams": 20.0
+        },
+        {
+          "ingredient_id": 12,
+          "quantity_grams": 10.0
+        },
+        {
+          "ingredient_id": 13,
+          "quantity_grams": 700.0
+        },
+        {
+          "ingredient_id": 16,
+          "quantity_grams": 5.0
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "MincedMeat with rice / Pakoravegetables",
+      "comments": "Missing ingredients not in database: minced meat Beef, Carottes, Leach",
+      "ingredients": [
+        {
+          "ingredient_id": 17,
+          "quantity_grams": 20.0
+        },
+        {
+          "ingredient_id": 18,
+          "quantity_grams": 20.0
+        },
+        {
+          "ingredient_id": 19,
+          "quantity_grams": 57.5
+        },
+        {
+          "ingredient_id": 20,
+          "quantity_grams": 5.0
+        },
+        {
+          "ingredient_id": 6,
+          "quantity_grams": 50.0
+        },
+        {
+          "ingredient_id": 21,
+          "quantity_grams": 150.0
+        },
+        {
+          "ingredient_id": 23,
+          "quantity_grams": 20.0
+        },
+        {
+          "ingredient_id": 24,
+          "quantity_grams": 10.0
+        },
+        {
+          "ingredient_id": 25,
+          "quantity_grams": 50.0
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Tandorri masala chickpeas with rice",
+      "comments": "Missing ingredients not in database: Chickpeas in can, Koriander fresh",
+      "ingredients": [
+        {
+          "ingredient_id": 26,
+          "quantity_grams": 20.0
+        },
+        {
+          "ingredient_id": 27,
+          "quantity_grams": 10.0
+        },
+        {
+          "ingredient_id": 28,
+          "quantity_grams": 30.0
+        },
+        {
+          "ingredient_id": 6,
+          "quantity_grams": 30.0
+        },
+        {
+          "ingredient_id": 29,
+          "quantity_grams": 100.0
+        },
+        {
+          "ingredient_id": 25,
+          "quantity_grams": 60.0
+        },
+        {
+          "ingredient_id": 30,
+          "quantity_grams": 0.7
+        },
+        {
+          "ingredient_id": 31,
+          "quantity_grams": 0.3
+        },
+        {
+          "ingredient_id": 32,
+          "quantity_grams": 0.2
+        },
+        {
+          "ingredient_id": 33,
+          "quantity_grams": 1.0
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "turkeygulasch mashed potaoes /Mushroomgulash green beans Feta",
+      "comments": "Missing ingredients not in database: Onion TK, Coconutmilk, Potatoe peeled, Sweet potatoe cut",
+      "ingredients": [
+        {
+          "ingredient_id": 37,
+          "quantity_grams": 120.0
+        },
+        {
+          "ingredient_id": 38,
+          "quantity_grams": 10.0
+        },
+        {
+          "ingredient_id": 4,
+          "quantity_grams": 10.0
+        },
+        {
+          "ingredient_id": 39,
+          "quantity_grams": 75.0
+        },
+        {
+          "ingredient_id": 40,
+          "quantity_grams": 50.0
+        },
+        {
+          "ingredient_id": 41,
+          "quantity_grams": 100.0
+        },
+        {
+          "ingredient_id": 42,
+          "quantity_grams": 50.0
+        },
+        {
+          "ingredient_id": 43,
+          "quantity_grams": 50.0
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "potatoe gulasch",
+      "comments": "Missing ingredients not in database: Sour Cream E\u00dfl\u00f6ffel",
+      "ingredients": [
+        {
+          "ingredient_id": 44,
+          "quantity_grams": 200.0
+        },
+        {
+          "ingredient_id": 45,
+          "quantity_grams": 50.0
+        },
+        {
+          "ingredient_id": 4,
+          "quantity_grams": 50.0
+        },
+        {
+          "ingredient_id": 38,
+          "quantity_grams": 50.0
+        },
+        {
+          "ingredient_id": 46,
+          "quantity_grams": 70.0
+        },
+        {
+          "ingredient_id": 33,
+          "quantity_grams": 2.0
+        },
+        {
+          "ingredient_id": 12,
+          "quantity_grams": 70.0
+        },
+        {
+          "ingredient_id": 47,
+          "quantity_grams": 5.0
+        },
+        {
+          "ingredient_id": 48,
+          "quantity_grams": 100.0
+        },
+        {
+          "ingredient_id": 49,
+          "quantity_grams": 50.0
+        },
+        {
+          "ingredient_id": 50,
+          "quantity_grams": 10.0
+        },
+        {
+          "ingredient_id": 51,
+          "quantity_grams": 0.1
+        },
+        {
+          "ingredient_id": 52,
+          "quantity_grams": 1.0
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Nudeln mit Bolognese & Vegi Bolognese",
+      "comments": "Missing ingredients not in database: minced meat beef, Carotts julienne",
+      "ingredients": [
+        {
+          "ingredient_id": 6,
+          "quantity_grams": 20.0
+        },
+        {
+          "ingredient_id": 29,
+          "quantity_grams": 150.0
+        },
+        {
+          "ingredient_id": 26,
+          "quantity_grams": 10.0
+        },
+        {
+          "ingredient_id": 53,
+          "quantity_grams": 5.0
+        },
+        {
+          "ingredient_id": 54,
+          "quantity_grams": 5.0
+        },
+        {
+          "ingredient_id": 55,
+          "quantity_grams": 1.0
+        },
+        {
+          "ingredient_id": 56,
+          "quantity_grams": 2.5
+        },
+        {
+          "ingredient_id": 57,
+          "quantity_grams": 0.5
+        },
+        {
+          "ingredient_id": 58,
+          "quantity_grams": 100.0
+        },
+        {
+          "ingredient_id": 3,
+          "quantity_grams": 10.0
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Thaicurry with rice",
+      "comments": "Missing ingredients not in database: Lauch cut, Sellerie julienne, Kokosnussmilch, Karotten cut cubes, Zwiebeln tk, Paprika (rot/gelb) fresh, Reis",
+      "ingredients": [
+        {
+          "ingredient_id": 59,
+          "quantity_grams": 10.0
+        },
+        {
+          "ingredient_id": 60,
+          "quantity_grams": 40.0
+        },
+        {
+          "ingredient_id": 62,
+          "quantity_grams": 2.0
+        },
+        {
+          "ingredient_id": 63,
+          "quantity_grams": 1.0
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Sliced fried Beef / mushroom sauce/ millet",
+      "comments": "Missing ingredients not in database: red and yellow pepper, redwine, Carotts",
+      "ingredients": [
+        {
+          "ingredient_id": 64,
+          "quantity_grams": 120.0
+        },
+        {
+          "ingredient_id": 6,
+          "quantity_grams": 55.0
+        },
+        {
+          "ingredient_id": 39,
+          "quantity_grams": 50.0
+        },
+        {
+          "ingredient_id": 38,
+          "quantity_grams": 20.0
+        },
+        {
+          "ingredient_id": 65,
+          "quantity_grams": 50.0
+        },
+        {
+          "ingredient_id": 66,
+          "quantity_grams": 70.0
+        },
+        {
+          "ingredient_id": 67,
+          "quantity_grams": 250.0
+        },
+        {
+          "ingredient_id": 27,
+          "quantity_grams": 120.0
+        },
+        {
+          "ingredient_id": 40,
+          "quantity_grams": 50.0
+        },
+        {
+          "ingredient_id": 40,
+          "quantity_grams": 50.0
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Dahl + quiona",
+      "comments": "Missing ingredients not in database: cellery julienne, carottes cujulienne, quiona",
+      "ingredients": [
+        {
+          "ingredient_id": 68,
+          "quantity_grams": 40.0
+        },
+        {
+          "ingredient_id": 6,
+          "quantity_grams": 20.0
+        },
+        {
+          "ingredient_id": 29,
+          "quantity_grams": 100.0
+        },
+        {
+          "ingredient_id": 69,
+          "quantity_grams": 1.0
+        },
+        {
+          "ingredient_id": 70,
+          "quantity_grams": 2.0
+        },
+        {
+          "ingredient_id": 27,
+          "quantity_grams": 10.0
+        },
+        {
+          "ingredient_id": 33,
+          "quantity_grams": 5.0
+        }
+      ]
+    }
+  ],
   "categories": [
     "Vegetables",
     "Fruits",
