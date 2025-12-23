@@ -32,8 +32,10 @@ Access at http://localhost:8501 (auto-opens in browser)
 
 ### Install Dependencies
 ```bash
-pip install streamlit
+pip install streamlit openpyxl
 ```
+- `streamlit` - Web application framework
+- `openpyxl` - Excel file reading (for import scripts)
 
 ### Dev Container
 Auto-configured with Python 3.11 and Streamlit. Server starts automatically on port 8501.
@@ -46,9 +48,10 @@ Auto-configured with Python 3.11 and Streamlit. Server starts automatically on p
 ## Architecture
 
 ### Application Structure
-**Two-file Python codebase:**
-- `app.py` (248 lines) - Main Streamlit UI with three pages: Ingredients, Recipes, Meal Planning
-- `src/data_manager.py` (249 lines) - Data access layer with CRUD operations and meal planning logic
+**Core Python codebase:**
+- `app.py` (251 lines) - Main Streamlit UI with three pages: Ingredients, Recipes, Meal Planning
+- `src/data_manager.py` (336 lines) - Data access layer with CRUD operations, meal planning logic, and data migration
+- `scripts/` - Utility scripts for data import and cleaning
 
 ### Data Model (JSON-based)
 
@@ -58,10 +61,8 @@ Auto-configured with Python 3.11 and Streamlit. Server starts automatically on p
   'id': int,                    # Auto-incremented
   'name': str,
   'category': str,              # From default categories
-  'unit': str,                  # From default units
-  'weight_per_unit': float,     # Weight of one unit
-  'num_units': int,             # Number of units in stock
-  'quantity': float             # Calculated: weight_per_unit × num_units
+  'measurement': str,           # kg, liter, or pieces
+  'amount': float               # Quantity in specified measurement
 }
 ```
 
@@ -80,20 +81,23 @@ Auto-configured with Python 3.11 and Streamlit. Server starts automatically on p
 }
 ```
 
-**Key Design Pattern:** Recipes store **per-person** quantities in grams only. Scaling happens at meal planning time.
+**Key Design Patterns:**
+- **Simplified Inventory**: Ingredients use a single measurement (kg/liter/pieces) and amount field, replacing the previous complex multi-field system
+- **Recipe Scaling**: Recipes store **per-person** quantities in grams only. Scaling happens at meal planning time
+- **Smart Conversion**: Meal planning automatically converts kg/liter to grams for comparison. Pieces-based measurements show warnings requiring manual verification
 
 ### Default Data
-**Categories:** Vegetables, Fruits, Meat, Dairy, Grains, Spices, Beverages, Canned Goods, Frozen, Other
+**Categories:** Vegetables, Fruits, Meat, Dairy, Grains, Spices, Beverages, Canned Goods, Frozen, Side dish, Breakfast, Other
 
-**Units:** pieces, cans, packages, bottles, kg, g, l, ml
+**Measurements:** kg, liter, pieces
 
 ### Pages & Workflows
 
-**Ingredients Page (app.py:26-103):**
-- Add ingredients with category, unit, weight per unit, number of units
+**Ingredients Page (app.py:26-91):**
+- Add ingredients with category, measurement type (kg/liter/pieces), and amount
 - Display inventory with category filter
-- Update quantities inline
-- Total quantity auto-calculated
+- Edit measurement type and amount inline
+- Delete ingredients
 
 **Recipes Page (app.py:105-176):**
 - Create recipes with per-person gram-based ingredients
@@ -101,24 +105,52 @@ Auto-configured with Python 3.11 and Streamlit. Server starts automatically on p
 - Comments field for recipe notes
 - Display all recipes in expandable sections
 
-**Meal Planning Page (app.py:178-248):**
+**Meal Planning Page (app.py:178-241):**
 - Select recipe and number of people
-- Immediately display scaled ingredients (non-calculated mode)
+- Immediately display scaled ingredients (per-person grams)
 - Calculate requirements vs. inventory
+- Automatic unit conversion (kg/liter to grams)
+- Warnings for pieces (cannot auto-convert)
 - Generate shopping list for missing ingredients
-- Visual feedback (checkmarks for available, warnings for missing)
+- Visual feedback (checkmarks for available, warnings for missing or incompatible units)
 
 ### Key Functions (data_manager.py)
 
 **CRUD Operations:**
-- `add_ingredient()`, `update_ingredient_quantity()`, `delete_ingredient()`, `get_all_ingredients()`
-- `add_recipe()`, `delete_recipe()`, `get_all_recipes()`
+- `add_ingredient(name, category, measurement, amount)` - Add new ingredient
+- `update_ingredient(ingredient_id, **kwargs)` - Update any ingredient fields (flexible)
+- `delete_ingredient(ingredient_id)` - Remove ingredient
+- `get_ingredients(category=None)` - Get all or filtered ingredients
+- `add_recipe(name, comments, ingredients)` - Add new recipe
+- `delete_recipe(recipe_id)` - Remove recipe
+- `get_recipes()` - Get all recipes
 
 **Meal Planning:**
-- `calculate_meal_plan(recipe_id, num_people)` - Scales recipe, compares with inventory, returns requirements and availability
+- `calculate_meal_requirements(recipe_id, num_people)` - Scales recipe (grams per person), converts inventory measurements to grams, compares availability, returns detailed requirements with conversion notes and warnings
 
 **Utilities:**
-- `get_categories()`, `get_units()` - Return defaults with fallback handling
+- `get_categories()` - Return category list with fallback
+- `get_units()` - Return measurement types (kg, liter, pieces)
+
+**Data Migration:**
+- `migrate_ingredient_data(data)` - Automatically converts old data structure (unit/weight_per_unit/num_units) to new simplified structure (measurement/amount)
+
+### Utility Scripts (scripts/)
+
+**import_ingredients.py:**
+- Reads ingredients from Excel file (`data/source.xlsx`)
+- Processes all sheets (meal planning data)
+- Deduplicates across sheets
+- Maps Excel units to simplified measurements (kg/liter/pieces)
+- Smart category assignment based on keywords
+- Skips existing ingredients to prevent duplicates
+
+**clean_ingredients.py:**
+- Merges duplicate ingredients with typos
+- Fixes category mismatches
+- Standardizes ingredient names
+- Re-numbers IDs sequentially
+- Preserves original data (backup recommended)
 
 ## Project Principles
 
