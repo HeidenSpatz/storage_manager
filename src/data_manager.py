@@ -5,6 +5,71 @@ from typing import Dict, List, Optional
 DATA_FILE = Path(__file__).parent.parent / "data" / "storage_data.json"
 
 
+def migrate_ingredient_data(data: Dict) -> Dict:
+    """Migrate old ingredient structure to new simplified structure."""
+    ingredients = data.get('ingredients', [])
+
+    if not ingredients:
+        return data
+
+    # Check if migration is needed
+    needs_migration = any('weight_per_unit' in ing for ing in ingredients)
+
+    if not needs_migration:
+        return data
+
+    # Create backup
+    import shutil
+    if DATA_FILE.exists():
+        backup_path = DATA_FILE.with_suffix('.json.backup')
+        shutil.copy2(DATA_FILE, backup_path)
+        print(f"Created backup at {backup_path}")
+
+    # Migrate each ingredient
+    migrated_count = 0
+    for ing in ingredients:
+        if 'weight_per_unit' not in ing:
+            continue
+
+        unit = ing.get('unit', 'pieces')
+        weight_per_unit = ing.get('weight_per_unit', 0)
+        num_units = ing.get('num_units', 0)
+        quantity = ing.get('quantity', weight_per_unit * num_units)
+
+        # Determine new measurement and amount
+        if unit in ['kg']:
+            ing['measurement'] = 'kg'
+            ing['amount'] = quantity
+        elif unit in ['g']:
+            ing['measurement'] = 'kg'
+            ing['amount'] = quantity / 1000
+        elif unit in ['l']:
+            ing['measurement'] = 'liter'
+            ing['amount'] = quantity
+        elif unit in ['ml']:
+            ing['measurement'] = 'liter'
+            ing['amount'] = quantity / 1000
+        else:  # pieces, cans, packages, bottles, etc.
+            ing['measurement'] = 'pieces'
+            ing['amount'] = num_units
+
+        # Remove old fields
+        ing.pop('unit', None)
+        ing.pop('weight_per_unit', None)
+        ing.pop('num_units', None)
+        ing.pop('quantity', None)
+
+        migrated_count += 1
+
+    if migrated_count > 0:
+        print(f"Migrated {migrated_count} ingredient(s) to new structure")
+
+    # Update units to measurements
+    data['units'] = ['kg', 'liter', 'pieces']
+
+    return data
+
+
 def load_data() -> Dict:
     """Load data from JSON file."""
     if not DATA_FILE.exists():
@@ -24,19 +89,24 @@ def load_data() -> Dict:
                 "Other"
             ],
             "units": [
-                "pieces",
-                "cans",
-                "packages",
-                "bottles",
                 "kg",
-                "g",
-                "l",
-                "ml"
+                "liter",
+                "pieces"
             ]
         }
 
     with open(DATA_FILE, 'r') as f:
-        return json.load(f)
+        data = json.load(f)
+
+    # Migrate old data structure if needed
+    original_data = json.dumps(data)
+    data = migrate_ingredient_data(data)
+
+    # Save migrated data if changes were made
+    if json.dumps(data) != original_data:
+        save_data(data)
+
+    return data
 
 
 def save_data(data: Dict) -> None:
@@ -47,7 +117,7 @@ def save_data(data: Dict) -> None:
 
 
 # Ingredient operations
-def add_ingredient(name: str, category: str, unit: str, weight_per_unit: float, num_units: int) -> Dict:
+def add_ingredient(name: str, category: str, measurement: str, amount: float) -> Dict:
     """Add a new ingredient."""
     data = load_data()
 
@@ -58,10 +128,8 @@ def add_ingredient(name: str, category: str, unit: str, weight_per_unit: float, 
         'id': new_id,
         'name': name,
         'category': category,
-        'unit': unit,
-        'weight_per_unit': weight_per_unit,
-        'num_units': num_units,
-        'quantity': weight_per_unit * num_units  # Keep for backward compatibility
+        'measurement': measurement,
+        'amount': amount
     }
 
     data['ingredients'].append(ingredient)
@@ -76,9 +144,6 @@ def update_ingredient(ingredient_id: int, **kwargs) -> Optional[Dict]:
     for ingredient in data['ingredients']:
         if ingredient['id'] == ingredient_id:
             ingredient.update(kwargs)
-            # Recalculate quantity if weight_per_unit or num_units changed
-            if 'weight_per_unit' in kwargs or 'num_units' in kwargs:
-                ingredient['quantity'] = ingredient.get('weight_per_unit', 0) * ingredient.get('num_units', 0)
             save_data(data)
             return ingredient
 
@@ -189,16 +254,39 @@ def calculate_meal_requirements(recipe_id: int, num_people: int) -> Dict:
         storage_ing = next((ing for ing in data['ingredients'] if ing['id'] == ing_id), None)
 
         if storage_ing:
-            available_qty = storage_ing['quantity']
-            is_sufficient = available_qty >= required_qty_grams
-            shortfall = max(0, required_qty_grams - available_qty)
+            measurement = storage_ing.get('measurement', 'pieces')
+            amount = storage_ing.get('amount', 0)
+
+            # Convert storage amount to grams for comparison
+            if measurement == 'kg':
+                available_qty_grams = amount * 1000
+                conversion_note = f"{amount:.1f} kg"
+                can_compare = True
+                warning = None
+            elif measurement == 'liter':
+                available_qty_grams = amount * 1000
+                conversion_note = f"{amount:.1f} liter (water-based estimate)"
+                can_compare = True
+                warning = None
+            else:  # pieces
+                available_qty_grams = 0
+                conversion_note = f"{amount:.1f} pieces"
+                can_compare = False
+                warning = "Cannot auto-convert pieces to grams - manual check required"
+
+            is_sufficient = available_qty_grams >= required_qty_grams if can_compare else False
+            shortfall = max(0, required_qty_grams - available_qty_grams) if can_compare else required_qty_grams
 
             requirements.append({
                 'ingredient_id': ing_id,
                 'name': storage_ing['name'],
                 'required_quantity': required_qty_grams,
-                'available_quantity': available_qty,
-                'unit': 'g',
+                'available_quantity': available_qty_grams,
+                'measurement': measurement,
+                'raw_amount': amount,
+                'conversion_note': conversion_note,
+                'can_compare': can_compare,
+                'warning': warning,
                 'is_sufficient': is_sufficient,
                 'shortfall': shortfall
             })

@@ -1,0 +1,36 @@
+{
+  "ingredients": [
+    {
+      "id": 1,
+      "name": "Beef",
+      "category": "Meat",
+      "unit": "packages",
+      "weight_per_unit": 500.0,
+      "num_units": 10,
+      "quantity": 5000.0
+    }
+  ],
+  "recipes": [],
+  "categories": [
+    "Vegetables",
+    "Fruits",
+    "Meat",
+    "Dairy",
+    "Grains",
+    "Spices",
+    "Beverages",
+    "Canned Goods",
+    "Frozen",
+    "Other"
+  ],
+  "units": [
+    "pieces",
+    "cans",
+    "packages",
+    "bottles",
+    "kg",
+    "g",
+    "l",
+    "ml"
+  ]
+}

@@ -31,17 +31,12 @@ if page == "Ingredients":
     with st.expander("Add New Ingredient"):
         ing_name = st.text_input("Ingredient Name")
         ing_category = st.selectbox("Category", dm.get_categories())
-        ing_unit = st.selectbox("Unit", dm.get_units())
-        ing_weight_per_unit = st.number_input("Weight per Unit", min_value=0.0, step=0.1)
-        ing_num_units = st.number_input("Number of Units", min_value=0, step=1, value=0)
-
-        # Display calculated total
-        total = ing_weight_per_unit * ing_num_units
-        st.info(f"**Total: {total:.1f} {ing_unit}**")
+        ing_measurement = st.selectbox("Measurement", ["kg", "liter", "pieces"])
+        ing_amount = st.number_input("Amount", min_value=0.0, step=0.1, value=0.0)
 
         if st.button("Add Ingredient"):
             if ing_name:
-                dm.add_ingredient(ing_name, ing_category, ing_unit, ing_weight_per_unit, ing_num_units)
+                dm.add_ingredient(ing_name, ing_category, ing_measurement, ing_amount)
                 st.success(f"Added {ing_name}!")
                 st.rerun()
             else:
@@ -59,40 +54,24 @@ if page == "Ingredients":
     if ingredients:
         for ing in sorted(ingredients, key=lambda x: x['name']):
             with st.container():
-                # Display ingredient name, category, unit, and total
-                total_weight = ing.get('weight_per_unit', 0) * ing.get('num_units', 0)
-                st.write(f"**{ing['name']}** ({ing['category']}) - Unit: {ing['unit']}")
-                st.write(f"Total: {total_weight:.1f} {ing['unit']}")
+                st.write(f"**{ing['name']}** ({ing['category']})")
+                st.write(f"Amount: {ing.get('amount', 0):.1f} {ing.get('measurement', 'pieces')}")
 
-                col1, col2, col3 = st.columns([2, 2, 1])
+                col1, col2 = st.columns([3, 1])
 
                 with col1:
-                    # Update weight per unit
-                    new_weight = st.number_input(
-                        "Weight per Unit",
+                    new_amount = st.number_input(
+                        "Amount",
                         min_value=0.0,
-                        value=float(ing.get('weight_per_unit', 0)),
+                        value=float(ing.get('amount', 0)),
                         step=0.1,
-                        key=f"weight_{ing['id']}"
+                        key=f"amount_{ing['id']}"
                     )
-                    if new_weight != ing.get('weight_per_unit', 0):
-                        dm.update_ingredient(ing['id'], weight_per_unit=new_weight)
+                    if new_amount != ing.get('amount', 0):
+                        dm.update_ingredient(ing['id'], amount=new_amount)
                         st.rerun()
 
                 with col2:
-                    # Update number of units
-                    new_units = st.number_input(
-                        "Number of Units",
-                        min_value=0,
-                        value=int(ing.get('num_units', 0)),
-                        step=1,
-                        key=f"units_{ing['id']}"
-                    )
-                    if new_units != ing.get('num_units', 0):
-                        dm.update_ingredient(ing['id'], num_units=new_units)
-                        st.rerun()
-
-                with col3:
                     if st.button("Delete", key=f"del_{ing['id']}"):
                         dm.delete_ingredient(ing['id'])
                         st.rerun()
@@ -219,10 +198,13 @@ elif page == "Meal Planning":
             st.write("**Ingredient Check:**")
 
             available = []
+            warnings = []
             missing = []
 
             for req in result['requirements']:
-                if req['is_sufficient']:
+                if req.get('warning'):
+                    warnings.append(req)
+                elif req['is_sufficient']:
                     available.append(req)
                 else:
                     missing.append(req)
@@ -231,15 +213,27 @@ elif page == "Meal Planning":
             if available:
                 st.success(f"Available ({len(available)} items)")
                 for req in available:
-                    st.write(f"✓ {req['name']}: {req['required_quantity']:.1f} {req['unit']} (have {req['available_quantity']:.1f})")
+                    st.write(f"✓ {req['name']}: {req['conversion_note']} available")
+                    st.write(f"  Recipe needs: {req['required_quantity']:.1f}g")
+
+            # Warnings for ingredients that can't be auto-converted
+            if warnings:
+                st.warning(f"Manual Check Required ({len(warnings)} items)")
+                for req in warnings:
+                    st.write(f"⚠️ {req['name']}: {req['warning']}")
+                    st.write(f"  Recipe needs: {req['required_quantity']:.1f}g")
+                    st.write(f"  You have: {req['conversion_note']}")
 
             # Missing ingredients
             if missing:
                 st.error(f"Missing or Insufficient ({len(missing)} items)")
                 st.write("**Shopping List:**")
                 for req in missing:
-                    st.write(f"⚠ {req['name']}: Need {req['shortfall']:.1f} {req['unit']} more (have {req['available_quantity']:.1f}, need {req['required_quantity']:.1f})")
-            else:
+                    st.write(f"⚠️ {req['name']}: Need {req['shortfall']:.1f}g more")
+                    st.write(f"  Available: {req['conversion_note']}")
+                    st.write(f"  Required: {req['required_quantity']:.1f}g")
+
+            if not missing and not warnings:
                 st.balloons()
                 st.success("You have all ingredients! Ready to cook!")
 
