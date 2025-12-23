@@ -651,12 +651,11 @@
     "Fruits",
     "Meat",
     "Dairy",
-    "Side dish",
+    "Grains",
     "Spices",
     "Beverages",
     "Canned Goods",
     "Frozen",
-    "Breakfast",
     "Other"
   ],
   "units": [
