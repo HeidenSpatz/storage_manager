@@ -57,9 +57,17 @@ if page == "Ingredients":
                 st.write(f"**{ing['name']}** ({ing['category']})")
                 st.write(f"Amount: {ing.get('amount', 0):.1f} {ing.get('measurement', 'pieces')}")
 
-                col1, col2 = st.columns([3, 1])
+                col1, col2, col3 = st.columns([2, 2, 1])
 
                 with col1:
+                    new_measurement = st.selectbox(
+                        "Measurement",
+                        options=["kg", "liter", "pieces"],
+                        index=["kg", "liter", "pieces"].index(ing.get('measurement', 'pieces')),
+                        key=f"measurement_{ing['id']}"
+                    )
+
+                with col2:
                     new_amount = st.number_input(
                         "Amount",
                         min_value=0.0,
@@ -67,11 +75,13 @@ if page == "Ingredients":
                         step=0.1,
                         key=f"amount_{ing['id']}"
                     )
-                    if new_amount != ing.get('amount', 0):
-                        dm.update_ingredient(ing['id'], amount=new_amount)
-                        st.rerun()
 
-                with col2:
+                # Update if either measurement or amount changed
+                if new_measurement != ing.get('measurement', 'pieces') or new_amount != ing.get('amount', 0):
+                    dm.update_ingredient(ing['id'], measurement=new_measurement, amount=new_amount)
+                    st.rerun()
+
+                with col3:
                     if st.button("Delete", key=f"del_{ing['id']}"):
                         dm.delete_ingredient(ing['id'])
                         st.rerun()
