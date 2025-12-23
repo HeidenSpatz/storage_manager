@@ -21,7 +21,7 @@ page = st.sidebar.selectbox(
     ["Ingredients", "Recipes", "Meal Planning"]
 )
 
-st.title("Storage Manager")
+st.title("NYC 2025 Storage Manager")
 
 # ===== INGREDIENTS PAGE =====
 if page == "Ingredients":
