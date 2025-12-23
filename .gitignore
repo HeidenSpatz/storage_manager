@@ -56,7 +56,6 @@ htmlcov/
 data/*.db
 data/*.sqlite
 data/*.sqlite3
-data/*.json
 data/*.xlsx
 outputs/*.xlsx
 outputs/*.csv
