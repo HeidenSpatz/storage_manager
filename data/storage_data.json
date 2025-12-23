@@ -17,7 +17,7 @@
     {
       "id": 3,
       "name": "Quinoa",
-      "category": "Grains",
+      "category": "Side dish",
       "measurement": "kg",
       "amount": 1.0
     },
@@ -66,7 +66,7 @@
     {
       "id": 10,
       "name": "Kidney Beans",
-      "category": "Other",
+      "category": "Side dish",
       "measurement": "kg",
       "amount": 1.0
     },
@@ -80,7 +80,7 @@
     {
       "id": 12,
       "name": "White Beans",
-      "category": "Other",
+      "category": "Side dish",
       "measurement": "kg",
       "amount": 1.0
     },
@@ -100,7 +100,7 @@
     },
     {
       "id": 15,
-      "name": "sourcream plain",
+      "name": "Sour cream",
       "category": "Dairy",
       "measurement": "kg",
       "amount": 1.0
@@ -114,534 +114,380 @@
     },
     {
       "id": 17,
-      "name": "minced meat Beef",
-      "category": "Meat",
+      "name": "Oatmeal (Haferflocken)",
+      "category": "Breakfast",
       "measurement": "kg",
       "amount": 1.0
     },
     {
       "id": 18,
-      "name": "Oatmeal (Haferflocken)",
-      "category": "Other",
-      "measurement": "kg",
-      "amount": 1.0
-    },
-    {
-      "id": 19,
       "name": "Oatmilk (Hafermilch)",
       "category": "Dairy",
       "measurement": "pieces",
       "amount": 1.0
     },
     {
-      "id": 20,
+      "id": 19,
       "name": "Eggs",
       "category": "Dairy",
       "measurement": "liter",
       "amount": 1.0
     },
     {
-      "id": 21,
+      "id": 20,
       "name": "Mandelbl\u00e4ttchen",
       "category": "Other",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 22,
+      "id": 21,
       "name": "Potatoes",
       "category": "Vegetables",
       "measurement": "kg",
       "amount": 1.0
     },
     {
+      "id": 22,
+      "name": "Leek",
+      "category": "Vegetables",
+      "measurement": "kg",
+      "amount": 1.0
+    },
+    {
       "id": 23,
-      "name": "Carottes",
-      "category": "Other",
-      "measurement": "kg",
-      "amount": 1.0
-    },
-    {
-      "id": 24,
-      "name": "Leach",
-      "category": "Other",
-      "measurement": "kg",
-      "amount": 1.0
-    },
-    {
-      "id": 25,
       "name": "Paprika",
       "category": "Spices",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 26,
+      "id": 24,
       "name": "Butter",
       "category": "Dairy",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 27,
+      "id": 25,
       "name": "Rice",
-      "category": "Grains",
+      "category": "Side dish",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 28,
+      "id": 26,
       "name": "Celery julienne",
       "category": "Vegetables",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 29,
+      "id": 27,
       "name": "Coconut milk",
       "category": "Dairy",
       "measurement": "pieces",
       "amount": 1.0
     },
     {
-      "id": 30,
+      "id": 28,
       "name": "Carrots julienne",
       "category": "Vegetables",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 31,
+      "id": 29,
       "name": "Tomatoes pulpe Bag in Box",
       "category": "Vegetables",
       "measurement": "pieces",
       "amount": 1.0
     },
     {
-      "id": 32,
-      "name": "Chickpeas in can",
-      "category": "Other",
-      "measurement": "pieces",
-      "amount": 1.0
-    },
-    {
-      "id": 33,
+      "id": 30,
       "name": "!!!Tandoori masala spice!!!",
-      "category": "Other",
+      "category": "Spices",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 34,
+      "id": 31,
       "name": "Honey",
       "category": "Other",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 35,
+      "id": 32,
       "name": "Ginger paste",
-      "category": "Other",
+      "category": "Spices",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 36,
-      "name": "Koriander fresh",
-      "category": "Other",
-      "measurement": "kg",
-      "amount": 1.0
-    },
-    {
-      "id": 37,
+      "id": 33,
       "name": "Parsley",
       "category": "Vegetables",
       "measurement": "pieces",
       "amount": 1.0
     },
     {
-      "id": 38,
+      "id": 34,
       "name": "salat ready made like usually",
       "category": "Other",
       "measurement": "pieces",
       "amount": 1.0
     },
     {
-      "id": 39,
+      "id": 35,
       "name": "olive oil for dressing, lemon juice, mustard, apple juice, honey",
-      "category": "Fruits",
+      "category": "Other",
       "measurement": "pieces",
       "amount": 1.0
     },
     {
-      "id": 40,
+      "id": 36,
       "name": "Mix o celery, carrots, onion fresh one for power broth",
       "category": "Vegetables",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 41,
+      "id": 37,
       "name": "Turkey cut",
       "category": "Meat",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 42,
-      "name": "Onion TK",
-      "category": "Vegetables",
-      "measurement": "kg",
-      "amount": 1.0
-    },
-    {
-      "id": 43,
-      "name": "Coconutmilk",
-      "category": "Dairy",
-      "measurement": "pieces",
-      "amount": 1.0
-    },
-    {
-      "id": 44,
+      "id": 38,
       "name": "Celery",
       "category": "Vegetables",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 45,
+      "id": 39,
       "name": "Mushrooms TK",
       "category": "Frozen",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 46,
-      "name": "Potatoe peeled",
-      "category": "Vegetables",
-      "measurement": "kg",
-      "amount": 1.0
-    },
-    {
-      "id": 47,
-      "name": "Sweet potatoe cut",
-      "category": "Vegetables",
-      "measurement": "kg",
-      "amount": 1.0
-    },
-    {
-      "id": 48,
+      "id": 40,
       "name": "Feta",
-      "category": "Other",
+      "category": "Dairy",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 49,
+      "id": 41,
       "name": "Green beans TK",
       "category": "Frozen",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 50,
+      "id": 42,
       "name": "Chickpeas canned",
       "category": "Canned Goods",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 51,
+      "id": 43,
       "name": "Mushrooms fresh",
-      "category": "Other",
+      "category": "Vegetables",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 52,
+      "id": 44,
       "name": "Potatoes peeled",
       "category": "Vegetables",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 53,
+      "id": 45,
       "name": "Onions",
       "category": "Vegetables",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 54,
-      "name": "Sour Cream E\u00dfl\u00f6ffel",
-      "category": "Dairy",
-      "measurement": "pieces",
-      "amount": 1.0
-    },
-    {
-      "id": 55,
+      "id": 46,
       "name": "Sausages (Wienerle geschnitten)",
       "category": "Meat",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 56,
+      "id": 47,
       "name": "Joghurt",
-      "category": "Other",
+      "category": "Dairy",
       "measurement": "pieces",
       "amount": 1.0
     },
     {
-      "id": 57,
+      "id": 48,
       "name": "Broth",
       "category": "Other",
       "measurement": "pieces",
       "amount": 1.0
     },
     {
-      "id": 58,
+      "id": 49,
       "name": "bones",
       "category": "Other",
       "measurement": "pieces",
       "amount": 1.0
     },
     {
-      "id": 59,
+      "id": 50,
       "name": "piment",
-      "category": "Other",
+      "category": "Spices",
       "measurement": "pieces",
       "amount": 1.0
     },
     {
-      "id": 60,
+      "id": 51,
       "name": "laurel",
-      "category": "Other",
+      "category": "Spices",
       "measurement": "pieces",
       "amount": 1.0
     },
     {
-      "id": 61,
+      "id": 52,
       "name": "juniper",
-      "category": "Other",
+      "category": "Spices",
       "measurement": "pieces",
       "amount": 1.0
     },
     {
-      "id": 62,
-      "name": "Carotts julienne",
-      "category": "Other",
-      "measurement": "kg",
-      "amount": 1.0
-    },
-    {
-      "id": 63,
+      "id": 53,
       "name": "bacon cubes",
       "category": "Meat",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 64,
+      "id": 54,
       "name": "Parmesan grinded",
-      "category": "Other",
+      "category": "Dairy",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 65,
+      "id": 55,
       "name": "Olivenoil",
       "category": "Other",
       "measurement": "pieces",
       "amount": 1.0
     },
     {
-      "id": 66,
+      "id": 56,
       "name": "Red Wine",
       "category": "Beverages",
       "measurement": "pieces",
       "amount": 1.0
     },
     {
-      "id": 67,
+      "id": 57,
       "name": "Tabasco",
       "category": "Other",
       "measurement": "pieces",
       "amount": 1.0
     },
     {
-      "id": 68,
+      "id": 58,
       "name": "pasta gluten free",
       "category": "Grains",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 69,
+      "id": 59,
       "name": "cashew (bruchware)",
       "category": "Other",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 70,
+      "id": 60,
       "name": "Cauliflower fresh",
+      "category": "Vegetables",
+      "measurement": "kg",
+      "amount": 1.0
+    },
+    {
+      "id": 61,
+      "name": "Carrot cubes",
       "category": "Other",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 71,
-      "name": "Lauch cut",
-      "category": "Other",
-      "measurement": "kg",
-      "amount": 1.0
-    },
-    {
-      "id": 72,
-      "name": "Sellerie julienne",
-      "category": "Other",
-      "measurement": "kg",
-      "amount": 1.0
-    },
-    {
-      "id": 73,
-      "name": "Kokosnussmilch",
-      "category": "Dairy",
-      "measurement": "kg",
-      "amount": 1.0
-    },
-    {
-      "id": 74,
-      "name": "Karotten cut cubes",
-      "category": "Other",
-      "measurement": "kg",
-      "amount": 1.0
-    },
-    {
-      "id": 75,
-      "name": "Zwiebeln tk",
-      "category": "Frozen",
-      "measurement": "kg",
-      "amount": 1.0
-    },
-    {
-      "id": 76,
-      "name": "Paprika (rot/gelb) fresh",
+      "id": 62,
+      "name": "coriander fresh",
       "category": "Spices",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 77,
-      "name": "coriander fresh",
-      "category": "Other",
-      "measurement": "kg",
-      "amount": 1.0
-    },
-    {
-      "id": 78,
-      "name": "Reis",
-      "category": "Dairy",
-      "measurement": "kg",
-      "amount": 1.0
-    },
-    {
-      "id": 79,
+      "id": 63,
       "name": "Thaicurrypaste",
       "category": "Spices",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 80,
+      "id": 64,
       "name": "meat beef pre-cut!",
       "category": "Meat",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 81,
-      "name": "red and yellow pepper",
-      "category": "Vegetables",
-      "measurement": "pieces",
-      "amount": 1.0
-    },
-    {
-      "id": 82,
-      "name": "redwine",
-      "category": "Beverages",
-      "measurement": "pieces",
-      "amount": 1.0
-    },
-    {
-      "id": 83,
-      "name": "Carotts",
-      "category": "Other",
-      "measurement": "kg",
-      "amount": 1.0
-    },
-    {
-      "id": 84,
+      "id": 65,
       "name": "Millet",
-      "category": "Other",
+      "category": "Side dish",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 85,
+      "id": 66,
       "name": "Mixed vegetables TK",
       "category": "Frozen",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 86,
+      "id": 67,
       "name": "sweet potatoes",
       "category": "Vegetables",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 87,
+      "id": 68,
       "name": "Red lentils",
-      "category": "Other",
+      "category": "Side dish",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 88,
-      "name": "cellery julienne",
-      "category": "Other",
-      "measurement": "kg",
-      "amount": 1.0
-    },
-    {
-      "id": 89,
-      "name": "carottes cujulienne",
-      "category": "Other",
-      "measurement": "kg",
-      "amount": 1.0
-    },
-    {
-      "id": 90,
+      "id": 69,
       "name": "spice mixture",
-      "category": "Other",
+      "category": "Spices",
       "measurement": "kg",
       "amount": 1.0
     },
     {
-      "id": 91,
+      "id": 70,
       "name": "Ginger",
-      "category": "Other",
+      "category": "Spices",
       "measurement": "pieces",
-      "amount": 1.0
-    },
-    {
-      "id": 92,
-      "name": "quiona",
-      "category": "Other",
-      "measurement": "kg",
       "amount": 1.0
     }
   ],
