@@ -153,7 +153,9 @@ elif page == "Recipes":
         st.subheader("Your Recipes")
 
         for recipe in sorted(recipes, key=lambda x: x['id']):
-            with st.expander(f"{recipe['name']} (per person)"):
+            tag = recipe.get('tag', '')
+            expander_title = f"{recipe['name']} ({tag})" if tag else recipe['name']
+            with st.expander(expander_title):
                 col1, col2 = st.columns(2)
                 with col1:
                     st.write(f"**Vegetarian:** {recipe.get('vegie', 'no')}")
@@ -187,7 +189,7 @@ elif page == "Meal Planning":
         selected_recipe = st.selectbox(
             "Select Recipe",
             options=recipes,
-            format_func=lambda x: f"{x['name']} (per person)"
+            format_func=lambda x: f"{x['name']} ({x.get('tag', '')})" if x.get('tag') else x['name']
         )
 
         # Number of people
