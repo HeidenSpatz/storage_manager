@@ -75,13 +75,13 @@ if page == "Ingredients":
 
     if ingredients:
         for ing in sorted(ingredients, key=lambda x: x['name']):
-            with st.container():
-                category_emoji = CATEGORY_EMOJIS.get(ing['category'], "📦")
-                measurement_emoji = MEASUREMENT_EMOJIS.get(ing.get('measurement', 'pieces'), "🔢")
+            category_emoji = CATEGORY_EMOJIS.get(ing['category'], "📦")
+            measurement_emoji = MEASUREMENT_EMOJIS.get(ing.get('measurement', 'pieces'), "🔢")
 
-                st.write(f"{category_emoji} **{ing['name']}** ({ing['category']})")
-                st.write(f"{measurement_emoji} Amount: {ing.get('amount', 0):.1f} {ing.get('measurement', 'pieces')}")
+            # Collapsed view shows: emoji, name, amount, and category
+            expander_label = f"{category_emoji} {ing['name']} - {measurement_emoji} {ing.get('amount', 0):.1f} {ing.get('measurement', 'pieces')} ({ing['category']})"
 
+            with st.expander(expander_label, expanded=False):
                 col1, col2, col3 = st.columns([2, 2, 1])
 
                 with col1:
@@ -110,8 +110,6 @@ if page == "Ingredients":
                     if st.button("Delete", key=f"del_{ing['id']}"):
                         dm.delete_ingredient(ing['id'])
                         st.rerun()
-
-                st.divider()
     else:
         st.info("No ingredients yet. Add one above!")
 
