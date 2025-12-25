@@ -1,13 +1,6 @@
 {
   "ingredients": [
     {
-      "id": 1,
-      "name": "Beef",
-      "category": "Meat",
-      "measurement": "pieces",
-      "amount": 10
-    },
-    {
       "id": 2,
       "name": "Minced meat",
       "category": "Meat",
@@ -30,7 +23,7 @@
     },
     {
       "id": 5,
-      "name": "Red Pepper",
+      "name": "Red Pepper (Paprika)",
       "category": "Vegetables",
       "measurement": "kg",
       "amount": 1.0
@@ -86,7 +79,7 @@
     },
     {
       "id": 13,
-      "name": "Breadrolls Toscana TK (delivery in time 8AM)",
+      "name": "Breadrolls Toscana TK",
       "category": "Grains",
       "measurement": "pieces",
       "amount": 1.0
@@ -135,7 +128,7 @@
     },
     {
       "id": 20,
-      "name": "Mandelbl\u00e4ttchen",
+      "name": "Mandelblaettchen",
       "category": "Other",
       "measurement": "kg",
       "amount": 1.0
@@ -149,15 +142,8 @@
     },
     {
       "id": 22,
-      "name": "Leek",
+      "name": "Leek (Lauch)",
       "category": "Vegetables",
-      "measurement": "kg",
-      "amount": 1.0
-    },
-    {
-      "id": 23,
-      "name": "Paprika",
-      "category": "Spices",
       "measurement": "kg",
       "amount": 1.0
     },
@@ -198,14 +184,14 @@
     },
     {
       "id": 29,
-      "name": "Tomatoes pulpe Bag in Box",
+      "name": "Tomatoes Pulpe",
       "category": "Vegetables",
-      "measurement": "pieces",
+      "measurement": "liter",
       "amount": 1.0
     },
     {
       "id": 30,
-      "name": "!!!Tandoori masala spice!!!",
+      "name": "Tandoori masala spice",
       "category": "Spices",
       "measurement": "kg",
       "amount": 1.0
@@ -228,13 +214,6 @@
       "id": 33,
       "name": "Parsley",
       "category": "Vegetables",
-      "measurement": "pieces",
-      "amount": 1.0
-    },
-    {
-      "id": 34,
-      "name": "salat ready made like usually",
-      "category": "Other",
       "measurement": "pieces",
       "amount": 1.0
     },
@@ -338,35 +317,35 @@
     },
     {
       "id": 49,
-      "name": "bones",
+      "name": "Bones",
       "category": "Other",
       "measurement": "pieces",
       "amount": 1.0
     },
     {
       "id": 50,
-      "name": "piment",
+      "name": "Piment",
       "category": "Spices",
       "measurement": "pieces",
       "amount": 1.0
     },
     {
       "id": 51,
-      "name": "laurel",
+      "name": "Laurel (Lorbeer)",
       "category": "Spices",
       "measurement": "pieces",
       "amount": 1.0
     },
     {
       "id": 52,
-      "name": "juniper",
+      "name": "Juniper",
       "category": "Spices",
       "measurement": "pieces",
       "amount": 1.0
     },
     {
       "id": 53,
-      "name": "bacon cubes",
+      "name": "Bacon cubes",
       "category": "Meat",
       "measurement": "kg",
       "amount": 1.0
@@ -380,7 +359,7 @@
     },
     {
       "id": 55,
-      "name": "Olivenoil",
+      "name": "Oliveoil",
       "category": "Other",
       "measurement": "pieces",
       "amount": 1.0
@@ -401,14 +380,14 @@
     },
     {
       "id": 58,
-      "name": "pasta gluten free",
+      "name": "Pasta gluten free",
       "category": "Grains",
       "measurement": "kg",
       "amount": 1.0
     },
     {
       "id": 59,
-      "name": "cashew (bruchware)",
+      "name": "Cashew (bruchware)",
       "category": "Other",
       "measurement": "kg",
       "amount": 1.0
@@ -429,7 +408,7 @@
     },
     {
       "id": 62,
-      "name": "coriander fresh",
+      "name": "Coriander fresh",
       "category": "Spices",
       "measurement": "kg",
       "amount": 1.0
@@ -443,14 +422,14 @@
     },
     {
       "id": 64,
-      "name": "meat beef pre-cut!",
+      "name": "Meat beef pre-cut!",
       "category": "Meat",
       "measurement": "kg",
       "amount": 1.0
     },
     {
       "id": 65,
-      "name": "Millet",
+      "name": "Millet (Hirse)",
       "category": "Side dish",
       "measurement": "kg",
       "amount": 1.0
@@ -464,7 +443,7 @@
     },
     {
       "id": 67,
-      "name": "sweet potatoes",
+      "name": "Sweet potatoes",
       "category": "Vegetables",
       "measurement": "kg",
       "amount": 1.0
@@ -478,7 +457,7 @@
     },
     {
       "id": 69,
-      "name": "spice mixture",
+      "name": "Spice mixture",
       "category": "Spices",
       "measurement": "kg",
       "amount": 1.0
@@ -497,7 +476,7 @@
       "name": "Chili sin Carne",
       "comments": "Missing ingredients not in database: sourcream plain",
       "vegie": "yes",
-      "tag": "27_12_L",
+      "tag": "Sat 27.12_L",
       "ingredients": [
         {
           "ingredient_id": 3,
@@ -554,7 +533,52 @@
       "name": "MincedMeat with rice / Pakoravegetables",
       "comments": "Missing ingredients not in database: minced meat Beef, Carottes, Leach",
       "vegie": "no",
-      "tag": "",
+      "tag": "Sat 27.12_D",
+      "ingredients": [
+        {
+          "ingredient_id": 17,
+          "quantity_grams": 20.0
+        },
+        {
+          "ingredient_id": 18,
+          "quantity_grams": 20.0
+        },
+        {
+          "ingredient_id": 19,
+          "quantity_grams": 57.5
+        },
+        {
+          "ingredient_id": 20,
+          "quantity_grams": 5.0
+        },
+        {
+          "ingredient_id": 6,
+          "quantity_grams": 50.0
+        },
+        {
+          "ingredient_id": 21,
+          "quantity_grams": 150.0
+        },
+        {
+          "ingredient_id": 23,
+          "quantity_grams": 20.0
+        },
+        {
+          "ingredient_id": 24,
+          "quantity_grams": 10.0
+        },
+        {
+          "ingredient_id": 25,
+          "quantity_grams": 50.0
+        }
+      ]
+    },
+        {
+      "id": 3,
+      "name": "Pakoravegetables",
+      "comments": "Missing ingredients not in database: minced meat Beef, Carottes, Leach",
+      "vegie": "yes",
+      "tag": "Sat 27.12_D",
       "ingredients": [
         {
           "ingredient_id": 17,
