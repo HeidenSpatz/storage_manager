@@ -100,6 +100,12 @@ elif page == "Recipes":
         recipe_name = st.text_input("Recipe Name")
         recipe_comments = st.text_area("Comments")
 
+        col1, col2 = st.columns(2)
+        with col1:
+            recipe_vegie = st.selectbox("Vegetarian", ["no", "yes"])
+        with col2:
+            recipe_tag = st.text_input("Tag")
+
         st.subheader("Ingredients (per person, in grams)")
 
         # Get all ingredients for selection
@@ -132,7 +138,7 @@ elif page == "Recipes":
 
             if st.button("Add Recipe"):
                 if recipe_name and recipe_ingredients:
-                    dm.add_recipe(recipe_name, recipe_comments, recipe_ingredients)
+                    dm.add_recipe(recipe_name, recipe_comments, recipe_ingredients, recipe_vegie, recipe_tag)
                     st.success(f"Added recipe: {recipe_name}!")
                     st.rerun()
                 else:
@@ -148,6 +154,12 @@ elif page == "Recipes":
 
         for recipe in sorted(recipes, key=lambda x: x['id']):
             with st.expander(f"{recipe['name']} (per person)"):
+                col1, col2 = st.columns(2)
+                with col1:
+                    st.write(f"**Vegetarian:** {recipe.get('vegie', 'no')}")
+                with col2:
+                    st.write(f"**Tag:** {recipe.get('tag', '')}")
+
                 if recipe.get('comments'):
                     st.write(f"**Comments:** {recipe['comments']}")
 

@@ -174,7 +174,7 @@ def get_ingredients(category: Optional[str] = None) -> List[Dict]:
 
 
 # Recipe operations
-def add_recipe(name: str, comments: str, ingredients: List[Dict]) -> Dict:
+def add_recipe(name: str, comments: str, ingredients: List[Dict], vegie: str = "no", tag: str = "") -> Dict:
     """Add a new recipe (per person, grams only)."""
     data = load_data()
 
@@ -185,7 +185,9 @@ def add_recipe(name: str, comments: str, ingredients: List[Dict]) -> Dict:
         'id': new_id,
         'name': name,
         'comments': comments,
-        'ingredients': ingredients  # [{'ingredient_id': int, 'quantity_grams': float}]
+        'ingredients': ingredients,  # [{'ingredient_id': int, 'quantity_grams': float}]
+        'vegie': vegie,
+        'tag': tag
     }
 
     data['recipes'].append(recipe)
