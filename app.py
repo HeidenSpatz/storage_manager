@@ -49,6 +49,9 @@ if page == "Ingredients":
         "pieces": "🔢"
     }
 
+    # Filter by category
+    filter_category = st.selectbox("Filter by Category", ["All"] + dm.get_categories())
+
     # Add new ingredient section
     with st.expander("Add New Ingredient"):
         ing_name = st.text_input("Ingredient Name")
@@ -63,9 +66,6 @@ if page == "Ingredients":
                 st.rerun()
             else:
                 st.error("Please enter an ingredient name")
-
-    # Filter by category
-    filter_category = st.selectbox("Filter by Category", ["All"] + dm.get_categories())
 
     # Display ingredients
     ingredients = dm.get_ingredients()
