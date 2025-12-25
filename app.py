@@ -27,6 +27,28 @@ st.title("NYC 2025 Storage Manager")
 if page == "Ingredients":
     st.header("Ingredient Inventory")
 
+    # Emoji mappings for visual indicators
+    CATEGORY_EMOJIS = {
+        "Vegetables": "🥕",
+        "Fruits": "🍎",
+        "Meat": "🥩",
+        "Dairy": "🥛",
+        "Grains": "🌾",
+        "Spices": "🌶️",
+        "Beverages": "🥤",
+        "Canned Goods": "🥫",
+        "Frozen": "❄️",
+        "Side dish": "🍽️",
+        "Breakfast": "🍳",
+        "Other": "📦"
+    }
+
+    MEASUREMENT_EMOJIS = {
+        "kg": "⚖️",
+        "liter": "🥤",
+        "pieces": "🔢"
+    }
+
     # Add new ingredient section
     with st.expander("Add New Ingredient"):
         ing_name = st.text_input("Ingredient Name")
@@ -54,8 +76,11 @@ if page == "Ingredients":
     if ingredients:
         for ing in sorted(ingredients, key=lambda x: x['name']):
             with st.container():
-                st.write(f"**{ing['name']}** ({ing['category']})")
-                st.write(f"Amount: {ing.get('amount', 0):.1f} {ing.get('measurement', 'pieces')}")
+                category_emoji = CATEGORY_EMOJIS.get(ing['category'], "📦")
+                measurement_emoji = MEASUREMENT_EMOJIS.get(ing.get('measurement', 'pieces'), "🔢")
+
+                st.write(f"{category_emoji} **{ing['name']}** ({ing['category']})")
+                st.write(f"{measurement_emoji} Amount: {ing.get('amount', 0):.1f} {ing.get('measurement', 'pieces')}")
 
                 col1, col2, col3 = st.columns([2, 2, 1])
 
