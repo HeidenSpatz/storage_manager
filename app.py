@@ -82,7 +82,7 @@ if page == "Ingredients":
             expander_label = f"{category_emoji} {ing['name']} - {measurement_emoji} {ing.get('amount', 0):.1f} {ing.get('measurement', 'pieces')} ({ing['category']})"
 
             with st.expander(expander_label, expanded=False):
-                col1, col2, col3 = st.columns([2, 2, 1])
+                col1, col2 = st.columns([2, 2])
 
                 with col1:
                     new_measurement = st.selectbox(
@@ -101,12 +101,15 @@ if page == "Ingredients":
                         key=f"amount_{ing['id']}"
                     )
 
-                # Update if either measurement or amount changed
-                if new_measurement != ing.get('measurement', 'pieces') or new_amount != ing.get('amount', 0):
-                    dm.update_ingredient(ing['id'], measurement=new_measurement, amount=new_amount)
-                    st.rerun()
+                col1, col2 = st.columns(2)
 
-                with col3:
+                with col1:
+                    if st.button("Save", key=f"save_{ing['id']}", type="primary"):
+                        dm.update_ingredient(ing['id'], measurement=new_measurement, amount=new_amount)
+                        st.success("Updated!")
+                        st.rerun()
+
+                with col2:
                     if st.button("Delete", key=f"del_{ing['id']}"):
                         dm.delete_ingredient(ing['id'])
                         st.rerun()

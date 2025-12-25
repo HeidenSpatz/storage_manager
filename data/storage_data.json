@@ -348,7 +348,7 @@
       "name": "Bacon cubes",
       "category": "Meat",
       "measurement": "kg",
-      "amount": 1.0
+      "amount": 5.0
     },
     {
       "id": 54,
@@ -573,7 +573,7 @@
         }
       ]
     },
-        {
+    {
       "id": 3,
       "name": "Pakoravegetables",
       "comments": "Missing ingredients not in database: minced meat Beef, Carottes, Leach",
