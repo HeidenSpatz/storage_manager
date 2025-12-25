@@ -496,6 +496,8 @@
       "id": 1,
       "name": "Chili sin Carne",
       "comments": "Missing ingredients not in database: sourcream plain",
+      "vegie": "yes",
+      "tag": "",
       "ingredients": [
         {
           "ingredient_id": 3,
@@ -551,6 +553,8 @@
       "id": 2,
       "name": "MincedMeat with rice / Pakoravegetables",
       "comments": "Missing ingredients not in database: minced meat Beef, Carottes, Leach",
+      "vegie": "no",
+      "tag": "",
       "ingredients": [
         {
           "ingredient_id": 17,
@@ -594,6 +598,8 @@
       "id": 3,
       "name": "Tandorri masala chickpeas with rice",
       "comments": "Missing ingredients not in database: Chickpeas in can, Koriander fresh",
+      "vegie": "yes",
+      "tag": "",
       "ingredients": [
         {
           "ingredient_id": 26,
@@ -641,6 +647,8 @@
       "id": 4,
       "name": "turkeygulasch mashed potaoes /Mushroomgulash green beans Feta",
       "comments": "Missing ingredients not in database: Onion TK, Coconutmilk, Potatoe peeled, Sweet potatoe cut",
+      "vegie": "no",
+      "tag": "",
       "ingredients": [
         {
           "ingredient_id": 37,
@@ -680,6 +688,8 @@
       "id": 5,
       "name": "potatoe gulasch",
       "comments": "Missing ingredients not in database: Sour Cream E\u00dfl\u00f6ffel",
+      "vegie": "no",
+      "tag": "",
       "ingredients": [
         {
           "ingredient_id": 44,
@@ -739,6 +749,8 @@
       "id": 6,
       "name": "Nudeln mit Bolognese & Vegi Bolognese",
       "comments": "Missing ingredients not in database: minced meat beef, Carotts julienne",
+      "vegie": "no",
+      "tag": "",
       "ingredients": [
         {
           "ingredient_id": 6,
@@ -786,6 +798,8 @@
       "id": 7,
       "name": "Thaicurry with rice",
       "comments": "Missing ingredients not in database: Lauch cut, Sellerie julienne, Kokosnussmilch, Karotten cut cubes, Zwiebeln tk, Paprika (rot/gelb) fresh, Reis",
+      "vegie": "yes",
+      "tag": "",
       "ingredients": [
         {
           "ingredient_id": 59,
@@ -809,6 +823,8 @@
       "id": 8,
       "name": "Sliced fried Beef / mushroom sauce/ millet",
       "comments": "Missing ingredients not in database: red and yellow pepper, redwine, Carotts",
+      "vegie": "no",
+      "tag": "",
       "ingredients": [
         {
           "ingredient_id": 64,
@@ -856,6 +872,8 @@
       "id": 9,
       "name": "Dahl + quiona",
       "comments": "Missing ingredients not in database: cellery julienne, carottes cujulienne, quiona",
+      "vegie": "yes",
+      "tag": "",
       "ingredients": [
         {
           "ingredient_id": 68,
