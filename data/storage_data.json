@@ -497,7 +497,7 @@
       "name": "Chili sin Carne",
       "comments": "Missing ingredients not in database: sourcream plain",
       "vegie": "yes",
-      "tag": "27.12_L",
+      "tag": "27_12_L",
       "ingredients": [
         {
           "ingredient_id": 3,
